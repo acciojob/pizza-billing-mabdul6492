@@ -6,7 +6,6 @@ public class Pizza {
     private int paperBag;
     private int price;
     private int topping;
-    private int total;
     private Boolean isVeg;
     private boolean cheeseAdded;
     private boolean toppingAdded;
@@ -24,7 +23,6 @@ public class Pizza {
         }
 
         this.bill = "Base Price Of The Pizza: "+this.price+"\n";
-        this.total = this.price;
         this.cheese = 80;
         this.paperBag = 20;
     }
@@ -36,26 +34,26 @@ public class Pizza {
     public void addExtraCheese(){
         if(this.cheeseAdded) return;
         this.cheeseAdded = true;
-        this.total += this.cheese;
+        this.price += this.cheese;
     }
 
     public void addExtraToppings(){
         if(this.toppingAdded) return;
         this.toppingAdded = true;
-        this.total += this.topping;
+        this.price += this.topping;
     }
 
     public void addTakeaway(){
         if(this.isTakeAway) return;
         this.isTakeAway = true;
-        this.total += this.paperBag;
+        this.price += this.paperBag;
     }
 
     public String getBill(){
         if(this.cheeseAdded) this.bill += "Extra Cheese Added: "+this.cheese+"\n";
         if(this.toppingAdded)  this.bill += "Extra Toppings Added: "+this.topping+"\n";
         if(this.isTakeAway) this.bill += "Paperbag Added: "+this.paperBag+"\n";
-        this.bill += "Total Price: "+this.total+"\n";
+        this.bill += "Total Price: "+this.price+"\n";
         return this.bill;
     }
 }
