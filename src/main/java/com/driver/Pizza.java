@@ -18,7 +18,6 @@ public class Pizza {
         if(this.isVeg){
             this.price = 300;
             this.topping = 70;
-            this.bill = "Base Price Of The Pizza: 300\n";
         } else {
             this.price = 400;
             this.topping = 120;
