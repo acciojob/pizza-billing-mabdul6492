@@ -2,14 +2,15 @@ package com.driver;
 
 public class Pizza {
 
-    private int cheese;
-    private int paperBag;
+    private final int cheese;
+    private final int paperBag;
     private int price;
-    private int topping;
-    private Boolean isVeg;
+    private final int topping;
+    private final Boolean isVeg;
     private boolean cheeseAdded;
-    private boolean toppingAdded;
+    private boolean isBillGenerated;
     private boolean isTakeAway;
+    private boolean toppingAdded;
     private String bill;
 
     public Pizza(Boolean isVeg){
@@ -49,11 +50,16 @@ public class Pizza {
         this.price += this.paperBag;
     }
 
-    public String getBill(){
+    private void generateBill(){
+        if(isBillGenerated) return;
+        this.isBillGenerated = true;
         if(this.cheeseAdded) this.bill += "Extra Cheese Added: "+this.cheese+"\n";
         if(this.toppingAdded)  this.bill += "Extra Toppings Added: "+this.topping+"\n";
         if(this.isTakeAway) this.bill += "Paperbag Added: "+this.paperBag+"\n";
         this.bill += "Total Price: "+this.price+"\n";
+    }
+    public String getBill(){
+        this.generateBill();
         return this.bill;
     }
 }
